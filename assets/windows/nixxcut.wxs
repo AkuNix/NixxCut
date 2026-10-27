@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  NixxCut's Windows Installer package, the .msi beside the Inno Setup .exe.
+
+  Built by build-app.yml with WiX from the staged folder the .exe is made
+  of, so the two installers ship the same files. The .exe is the
+  one a person double-clicks; this is the one an administrator deploys -
+  Group Policy, Intune, winget - and it installs for the machine, into
+  Program Files, with a Start menu entry and a clean uninstall. Handed in:
+
+    wix build -arch x64 -d Version=0.1.0 -d Root=C:\...\NixxCut
+              -d Stage=C:\...\stage\NixxCut-0.1.0-windows-x86_64
+              -o stage\NixxCut-0.1.0-windows-x86_64.msi assets\windows\nixxcut.wxs
+
+  Root is the repository: WiX resolves a source path against where it is
+  run from, not against this file.
+-->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <!-- One upgrade code for the life of the product, so a newer .msi
+       replaces an older one rather than sitting beside it. -->
+  <Package Name="NixxCut"
+           Manufacturer="NixxCut contributors"
+           Version="$(var.Version)"
+           UpgradeCode="6F752DAF-5FAB-42FA-B97C-6D07D25CF64B"
+           Scope="perMachine"
+           Language="1033">
+    <MajorUpgrade DowngradeErrorMessage="A newer version of NixxCut is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Icon Id="nixxcut.ico" SourceFile="$(var.Root)\assets\icons\nixxcut.ico" />
+    <Property Id="ARPPRODUCTICON" Value="nixxcut.ico" />
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/AkuNix/NixxCut" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="INSTALLFOLDER" Name="NixxCut" />
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="ShortcutFolder" Name="NixxCut" />
+    </StandardDirectory>
+
+    <Feature Id="Main" Title="NixxCut" Level="1">
+      <ComponentGroupRef Id="Program" />
+      <ComponentRef Id="StartMenu" />
+    </Feature>
+
+    <!-- Every file in the staged folder, as it is there. -->
+    <ComponentGroup Id="Program" Directory="INSTALLFOLDER">
+      <Files Include="$(var.Stage)\**" />
+    </ComponentGroup>
+
+    <Component Id="StartMenu" Directory="ShortcutFolder" Guid="2F0B7C51-6E4D-4A1B-9C3E-8D5F1A2B3C44">
+      <Shortcut Id="StartMenuShortcut"
+                Name="NixxCut"
+                Description="Video editor"
+                Target="[INSTALLFOLDER]nixxcut.exe"
+                WorkingDirectory="INSTALLFOLDER"
+                Icon="nixxcut.ico" />
+      <RemoveFolder Id="RemoveShortcutFolder" On="uninstall" />
+      <RegistryValue Root="HKCU" Key="Software\NixxCut" Name="StartMenu" Type="integer" Value="1" KeyPath="yes" />
+    </Component>
+  </Package>
+</Wix>

@@ -5,9 +5,9 @@
 # instruction an older CPU lacks all used to reach a release unnoticed.
 #
 #   smoke-linux.sh [--sde SDE64] DIR
-#       The staged folder (DIR/concat beside DIR/lib), on this machine:
-#       every library resolves from the folder alone; `concat --version`
-#       exits 0; `concat --smoke` (start-up through the first frame of the
+#       The staged folder (DIR/nixxcut beside DIR/lib), on this machine:
+#       every library resolves from the folder alone; `nixxcut --version`
+#       exits 0; `nixxcut --smoke` (start-up through the first frame of the
 #       window, then out) exits 0 under Xvfb, and does not so much as try
 #       to open the NVIDIA driver's CUDA or NVENC libraries, which nothing
 #       should touch before a person asks for a hardware export. With
@@ -62,7 +62,7 @@ host() {
   if [ "${1:-}" = "--sde" ]; then sde=$2; shift 2; fi
   [ $# -eq 1 ] || { echo "usage: $0 [--sde SDE64] DIR" >&2; exit 2; }
   dir=$(cd "$1" && pwd)
-  local bin="$dir/concat"
+  local bin="$dir/nixxcut"
   [ -x "$bin" ] || fail "$bin is not there"
 
   # The build's own environment points at the FFmpeg it linked; the
@@ -77,10 +77,10 @@ host() {
     fail "the binary does not resolve every library from its own folder"
   fi
 
-  say "concat --version"
-  HOME=$(fresh_home) expect_ok "concat --version" 60 "$bin" --version
+  say "nixxcut --version"
+  HOME=$(fresh_home) expect_ok "nixxcut --version" 60 "$bin" --version
 
-  say "concat --smoke"
+  say "nixxcut --smoke"
   local trace
   trace=$(mktemp)
   local tracer=()
@@ -89,31 +89,31 @@ host() {
   else
     echo "no strace: the start-up is run but its file opens are not checked"
   fi
-  HOME=$(fresh_home) expect_ok "concat --smoke" 180 \
+  HOME=$(fresh_home) expect_ok "nixxcut --smoke" 180 \
     xvfb-run -a -s "-screen 0 1920x1080x24" "${tracer[@]}" "$bin" --smoke
   if [ ${#tracer[@]} -gt 0 ]; then
     local cuda
     cuda=$(grep -E 'lib(cuda|nvcuvid|nvidia-encode)\.so' "$trace" || true)
     if [ -n "$cuda" ]; then
       echo "$cuda"
-      fail "concat --smoke tried to load the NVIDIA driver's CUDA or NVENC libraries at start-up"
+      fail "nixxcut --smoke tried to load the NVIDIA driver's CUDA or NVENC libraries at start-up"
     fi
     echo "no CUDA or NVENC library opened at start-up"
   fi
 
   if [ -n "$sde" ]; then
-    say "concat --version on an emulated Ivy Bridge"
+    say "nixxcut --version on an emulated Ivy Bridge"
     # The emulator stops the program at the first instruction the chip
     # it poses as does not have, and says which.
-    HOME=$(fresh_home) expect_ok "concat --version under SDE -ivb" 600 "$sde" -ivb -- "$bin" --version
+    HOME=$(fresh_home) expect_ok "nixxcut --version under SDE -ivb" 600 "$sde" -ivb -- "$bin" --version
 
     # whisper's CPU kernels, one module per CPU generation: ggml opens
     # every one to score it against the CPU before it keeps the best, so
     # the Haswell and Ice Lake modules are loaded here too, on a Sandy
     # Bridge - AVX without even F16C, like #318's i7-2600 - which must
     # come out with the sandybridge module and no illegal instruction.
-    say "concat --whisper-cpu on an emulated Sandy Bridge"
-    HOME=$(fresh_home) expect_ok "concat --whisper-cpu under SDE -snb" 600 "$sde" -snb -- "$bin" --whisper-cpu
+    say "nixxcut --whisper-cpu on an emulated Sandy Bridge"
+    HOME=$(fresh_home) expect_ok "nixxcut --whisper-cpu under SDE -snb" 600 "$sde" -snb -- "$bin" --whisper-cpu
   fi
 }
 
@@ -127,9 +127,9 @@ container() {
   say "in a clean $image"
   docker run --rm \
     -v "$here/smoke-linux.sh:/ci/smoke-linux.sh:ro" \
-    -v "$deb:/pkg/concat.deb:ro" \
-    -v "$appimage:/pkg/concat.AppImage:ro" \
-    "$image" bash /ci/smoke-linux.sh --inside /pkg/concat.deb /pkg/concat.AppImage
+    -v "$deb:/pkg/nixxcut.deb:ro" \
+    -v "$appimage:/pkg/nixxcut.AppImage:ro" \
+    "$image" bash /ci/smoke-linux.sh --inside /pkg/nixxcut.deb /pkg/nixxcut.AppImage
 }
 
 # Inside the container. Xvfb and Mesa's software drivers stand in for
@@ -144,18 +144,18 @@ inside() {
   apt-get install -y -qq --no-install-recommends \
     "$deb" xvfb xauth libgl1-mesa-dri mesa-vulkan-drivers fonts-dejavu-core > /dev/null
 
-  say "concat --version (the package)"
-  HOME=$(fresh_home) expect_ok "concat --version from the .deb" 60 concat --version
-  say "concat --smoke (the package)"
-  HOME=$(fresh_home) expect_ok "concat --smoke from the .deb" 180 \
-    xvfb-run -a -s "-screen 0 1920x1080x24" concat --smoke
+  say "nixxcut --version (the package)"
+  HOME=$(fresh_home) expect_ok "nixxcut --version from the .deb" 60 nixxcut --version
+  say "nixxcut --smoke (the package)"
+  HOME=$(fresh_home) expect_ok "nixxcut --smoke from the .deb" 180 \
+    xvfb-run -a -s "-screen 0 1920x1080x24" nixxcut --smoke
 
   # No FUSE in a container: the AppImage unpacks itself and runs.
   export APPIMAGE_EXTRACT_AND_RUN=1
-  say "concat --version (the AppImage)"
-  HOME=$(fresh_home) expect_ok "concat --version from the AppImage" 120 "$appimage" --version
-  say "concat --smoke (the AppImage)"
-  HOME=$(fresh_home) expect_ok "concat --smoke from the AppImage" 240 \
+  say "nixxcut --version (the AppImage)"
+  HOME=$(fresh_home) expect_ok "nixxcut --version from the AppImage" 120 "$appimage" --version
+  say "nixxcut --smoke (the AppImage)"
+  HOME=$(fresh_home) expect_ok "nixxcut --smoke from the AppImage" 240 \
     xvfb-run -a -s "-screen 0 1920x1080x24" "$appimage" --smoke
 }
 

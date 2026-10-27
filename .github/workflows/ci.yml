@@ -139,7 +139,7 @@ jobs:
       # keeps en.json the inventory of them and every shipped language
       # keyed off it. See TRANSLATING.md.
       - run: python3 scripts/locales.py --check
-      # The models Concat downloads are mirrored onto a release of this
+      # The models NixXCut downloads are mirrored onto a release of this
       # repository; models/manifest.toml is what fills that mirror and the
       # engine's tables are what a download is checked against. This keeps
       # the two saying the same thing. See models/manifest.toml.
@@ -162,7 +162,7 @@ jobs:
         env:
           CARGO_PROFILE_DEV_DEBUG: "0"
         run: cargo nextest run --workspace --no-run --build-jobs 1
-      # CONCAT_REQUIRE_GPU: the GPU tests fail rather than skip when no
+      # NIXXCUT_REQUIRE_GPU: the GPU tests fail rather than skip when no
       # adapter is usable, so the parity suite is known to have run. The
       # report and the log are kept when it fails (the last step).
       - name: Run the tests
@@ -170,7 +170,7 @@ jobs:
         working-directory: src
         env:
           CARGO_PROFILE_DEV_DEBUG: "0"
-          CONCAT_REQUIRE_GPU: "1"
+          NIXXCUT_REQUIRE_GPU: "1"
         run: |
           set -o pipefail
           status=0
@@ -185,8 +185,8 @@ jobs:
           CARGO_PROFILE_DEV_DEBUG: "0"
         run: cargo test --workspace --doc -j 1
       # The gRPC transport is a feature nothing else in the workspace turns
-      # on, so it is linted and tested here on its own. See concat-server.
-      - run: cargo clippy -p concat-server -p concat-cli --features grpc --all-targets -- -D warnings
+      # on, so it is linted and tested here on its own. See nixxcut-server.
+      - run: cargo clippy -p nixxcut-server -p nixxcut-cli --features grpc --all-targets -- -D warnings
         timeout-minutes: 10
         working-directory: src
       - name: Run the gRPC tests
@@ -195,7 +195,7 @@ jobs:
         run: |
           set -o pipefail
           status=0
-          cargo nextest run -p concat-server --features grpc --profile ci 2>&1 | tee nextest-grpc.log || status=$?
+          cargo nextest run -p nixxcut-server --features grpc --profile ci 2>&1 | tee nextest-grpc.log || status=$?
           mv target/nextest/ci/junit.xml target/nextest/ci/junit-grpc.xml 2>/dev/null || true
           exit "$status"
 
@@ -217,7 +217,7 @@ jobs:
   # not tested, and is tested where it is developed. Neither runner has a
   # GPU. Windows has WARP, a software adapter, which the parity suite runs
   # on and the cards test does not: a hundred cards on WARP ran past the
-  # ninety minutes every time (see cards.rs), so without CONCAT_REQUIRE_GPU
+  # ninety minutes every time (see cards.rs), so without NIXXCUT_REQUIRE_GPU
   # it skips there and runs on Linux's lavapipe above.
   desktop:
     name: ${{ matrix.verb }} on ${{ matrix.os }}
@@ -388,7 +388,7 @@ jobs:
         shell: bash
         run: |
           status=0
-          cargo nextest run -p concat-host --test export --build-jobs 2 --profile ci --no-capture \
+          cargo nextest run -p nixxcut-host --test export --build-jobs 2 --profile ci --no-capture \
             -E 'test(=every_edit_still_exports)' 2>&1 | tee nextest-every-edit.log || status=$?
           mv target/nextest/ci/junit.xml target/nextest/ci/junit-every-edit.xml 2>/dev/null || true
           exit "$status"

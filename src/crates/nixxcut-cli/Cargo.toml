@@ -1,0 +1,34 @@
+[package]
+name = "nixxcut-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Command line driver for the NixXCut engine."
+
+# `nixxcut` is the editor window's binary; the driver gets the suffix.
+[[bin]]
+name = "nixxcut-cli"
+path = "src/main.rs"
+
+[dependencies]
+nixxcut-core.workspace = true
+nixxcut-media.workspace = true
+nixxcut-render.workspace = true
+# The `api` command: the NixXCut API over stdin and stdout. The `serve`
+# command: the same on a socket.
+nixxcut-api.workspace = true
+nixxcut-server.workspace = true
+serde_json.workspace = true
+# `preview` draws one effect's card, as the window does; `check` loads
+# packages and runs their probes.
+nixxcut-effects.workspace = true
+nixxcut-host.workspace = true
+clap.workspace = true
+
+[features]
+# `serve --grpc`. Off by default; see nixxcut-server.
+grpc = ["nixxcut-server/grpc"]
+
+[lints]
+workspace = true

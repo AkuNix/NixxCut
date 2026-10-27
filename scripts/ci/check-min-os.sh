@@ -19,7 +19,7 @@
 # A --lazy file is one the app opens itself, at first use, and only on a
 # system at least as new as the minimum in that file's own header - the
 # Intel Mac's ONNX Runtime, which needs 13.4 where the app needs 12
-# (#333; concat-vision's onnx.rs reads the same field). dyld never loads
+# (#333; nixxcut-vision's onnx.rs reads the same field). dyld never loads
 # it at launch, so it is held against its own minimum rather than the
 # bundle's: listed with the system it needs, and an error if it is not
 # there, since then the features behind it are missing.

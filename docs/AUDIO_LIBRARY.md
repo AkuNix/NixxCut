@@ -1,15 +1,15 @@
-# The Concat sound library
+# The NixXCut sound library
 
-The Library's **Audio** page has a **Concat** shelf of built-in sounds and
+The Library's **Audio** page has a **NixXCut** shelf of built-in sounds and
 music (#60). Nothing ships inside the app: the shelf reads a manifest from
-the [`concatapp/assets`](https://github.com/concatapp/assets) repository the
-first time someone asks for it (a "Load Concat sounds" button, never at
+the [`nixxcutapp/assets`](https://github.com/nixxcutapp/assets) repository the
+first time someone asks for it (a "Load NixXCut sounds" button, never at
 startup), and each sound is downloaded the first time it is played or used,
 then checked against its SHA-256 and kept in the app's cache.
 
 This page is what the asset curator produces for that to work.
 
-## Layout in `concatapp/assets`
+## Layout in `nixxcutapp/assets`
 
 ```text
 audio/
@@ -22,18 +22,18 @@ audio/
 The files sit flat in `audio/`. The app fetches the manifest from:
 
 ```text
-https://raw.githubusercontent.com/concatapp/assets/main/audio/manifest.json
+https://raw.githubusercontent.com/nixxcutapp/assets/main/audio/manifest.json
 ```
 
 and each sound from, in order:
 
-1. the release mirror: `https://github.com/concatapp/assets/releases/download/audio-v1/<file>`
-2. the repository itself: `https://raw.githubusercontent.com/concatapp/assets/main/audio/<file>`
+1. the release mirror: `https://github.com/nixxcutapp/assets/releases/download/audio-v1/<file>`
+2. the repository itself: `https://raw.githubusercontent.com/nixxcutapp/assets/main/audio/<file>`
 
 Upload every file to the `audio-v1` release as well. Then a file that moves in
 the repository can't break the shelf. Whichever source the bytes come from,
 they are checked against the manifest's `sha256`. The URLs are constants in
-`src/crates/concat-host/src/models.rs`: `SOUNDS_MANIFEST`, `SOUNDS_REPO` and
+`src/crates/nixxcut-host/src/models.rs`: `SOUNDS_MANIFEST`, `SOUNDS_REPO` and
 `SOUNDS_RELEASE`.
 
 Until `audio/manifest.json` exists (the request answers 404), the shelf says

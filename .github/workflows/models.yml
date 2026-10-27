@@ -1,8 +1,8 @@
 name: Mirror models
 
-# Fills Concat's model mirror from upstream and publishes it as a release.
+# Fills NixXCut's model mirror from upstream and publishes it as a release.
 #
-# Concat fetches its cutout networks, its Kokoro voice bank and its whisper
+# NixXCut fetches its cutout networks, its Kokoro voice bank and its whisper
 # models on demand, and it fetches them from a release of this repository
 # rather than from whoever published them. models/manifest.toml is the table
 # of what those are; this workflow is what turns that table into the release
@@ -113,8 +113,8 @@ jobs:
           set -euo pipefail
           if ! gh release view "$RELEASE" >/dev/null 2>&1; then
             gh release create "$RELEASE" \
-              --title "Concat models ($RELEASE)" \
-              --notes "The models Concat downloads on demand, mirrored from the upstreams named in models/manifest.toml. Not an app release: see the tags beginning with v for those." \
+              --title "NixXCut models ($RELEASE)" \
+              --notes "The models NixXCut downloads on demand, mirrored from the upstreams named in models/manifest.toml. Not an app release: see the tags beginning with v for those." \
               --latest=false
           fi
           gh release upload "$RELEASE" mirror/* --clobber

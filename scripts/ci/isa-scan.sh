@@ -29,7 +29,7 @@
 # module per CPU generation, of which ggml loads the one the CPU can run,
 # so the Haswell-and-newer modules are allowed what the rest are not. And a statically linked binary
 # carries such code too - memchr, aho-corasick, ring and Skia all dispatch
-# this way - so a count of zero is not what to expect from concat itself.
+# this way - so a count of zero is not what to expect from nixxcut itself.
 # scripts/ci/isa-allow.txt says, per file, how much of each class is
 # expected: `any` for a library that dispatches (not even disassembled),
 # or a limit per class for a binary that holds some dispatched code among

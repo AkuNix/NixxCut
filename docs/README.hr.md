@@ -1,25 +1,25 @@
 <p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/jub0t/Concat@main/assets/concat-mark-dark.png" alt="Concat" width="100" />
+  <img src="../assets/nixxcut-mark-dark.png" alt="NixXCut" width="100" />
 </p>
 
-<h1 align="center">Concat</h1>
+<h1 align="center">NixXCut</h1>
 <h3 align="center">Besplatna zamjena za CapCut otvorenog koda, za sve platforme.</h3>
 
 <div align="center">
 
-<img src="https://cdn.jsdelivr.net/gh/jub0t/Concat@main/assets/editor.png" alt="Concat editor" width="100%" />
+<img src="../assets/editor.png" alt="NixXCut editor" width="100%" />
 
 <p align="center">
   <a href="https://github.com/jub0t/Concat/releases"><img src="https://img.shields.io/github/downloads/jub0t/concat/total?style=flat&logo=github&logoColor=F8F8F8&label=Downloads&labelColor=212123&color=0568FD" alt="Total Downloads" /></a>
   <a href="https://github.com/jub0t/Concat/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/jub0t/Concat/ci.yml?style=flat&logo=githubactions&logoColor=F8F8F8&label=Build&labelColor=000000" alt="Build Status" /></a>
-  <a href="https://github.com/jub0t/Concat/releases"><img src="https://img.shields.io/badge/Version-0.2.8-0568FD?style=flat&logo=semver&logoColor=F8F8F8&labelColor=212123" alt="Concat Version 0.2.8" /></a>
-  <a href="https://discord.gg/DVuPfpXfqP"><img src="https://img.shields.io/badge/Discord-Join%20the%20server-5865F2?style=flat&logo=discord&logoColor=F8F8F8&labelColor=000000" alt="Join Concat Discord" /></a>
+  <a href="https://github.com/jub0t/Concat/releases"><img src="https://img.shields.io/badge/Version-0.2.8-0568FD?style=flat&logo=semver&logoColor=F8F8F8&labelColor=212123" alt="NixXCut Version 0.2.8" /></a>
+  <a href="https://discord.gg/DVuPfpXfqP"><img src="https://img.shields.io/badge/Discord-Join%20the%20server-5865F2?style=flat&logo=discord&logoColor=F8F8F8&labelColor=000000" alt="Join NixXCut Discord" /></a>
   <a href="../LICENSE"><img src="https://img.shields.io/badge/License-AGPL%20v3-0568FD?style=flat&logo=gnu&logoColor=F8F8F8&labelColor=212123" alt="License: AGPL-3.0-or-later" /></a>
 </p>
 
 <p align="center">
   <a href="https://www.star-history.com/jub0t/concat"><img src="https://api.star-history.com/badge?repo=jub0t/concat&type=rank" alt="Star History Rank" height="62" /></a>
-  <a href="https://concatenate.pages.dev/#download"><img src="../assets/download_button.svg" alt="Download Concat" width="251" /></a>
+  <a href="https://concatenate.pages.dev/#download"><img src="../assets/download_button.svg" alt="Download NixXCut" width="251" /></a>
 </p>
 
 [🇬🇧 English](../README.md) · [🇩🇪 Deutsch](README.de.md) · [🇪🇸 Español](README.es.md) · [🇫🇷 Français](README.fr.md) · [🇮🇹 Italiano](README.it.md) · [🇳🇱 Nederlands](README.nl.md) · [🇵🇱 Polski](README.pl.md) · [🇧🇷 Português (Brasil)](README.pt-BR.md) · [🇷🇺 Русский](README.ru.md) · [🇺🇦 Українська](README.uk.md) · [🇹🇷 Türkçe](README.tr.md) · **🇭🇷 Hrvatski** · [🇮🇩 Bahasa Indonesia](README.id.md) · [🇻🇳 Tiếng Việt](README.vi.md) · [🇹🇭 ไทย](README.th.md) · [🇯🇵 日本語](README.ja.md) · [🇰🇷 한국어](README.ko.md) · [🇨🇳 简体中文](README.zh-Hans.md) · [🇹🇼 繁體中文](README.zh-TW.md) · [🇸🇦 العربية](README.ar.md) · [🇮🇱 עברית](README.he.md) · [🇮🇷 فارسی](README.fa.md) · [🇮🇳 हिन्दी](README.hi.md) · [🇵🇰 اردو](README.ur.md) · [🇧🇩 বাংলা](README.bn.md)
@@ -31,8 +31,8 @@
 <table width="100%">
   <tr>
     <td align="center">
-      <a href="https://proxyon.io/?ref=concat"><img src="https://cdn.jsdelivr.net/gh/jub0t/Concat@main/assets/proxyon_sponsor_logo.png" alt="Proxyon" width="80" /></a><br />
-      <a href="https://proxyon.io/?ref=concat"><b>Proxyon</b></a><br />
+      <a href="https://proxyon.io/?ref=nixxcut"><img src="../assets/proxyon_sponsor_logo.png" alt="Proxyon" width="80" /></a><br />
+      <a href="https://proxyon.io/?ref=nixxcut"><b>Proxyon</b></a><br />
       <sub>Proxyji s plaćanjem po potrošnji za razvojne programere<br />Kod <code>JUB0T</code> daje 20 % popusta</sub>
     </td>
   </tr>
@@ -43,7 +43,7 @@
 
 ## O projektu
 
-Concat je besplatan videouređivač otvorenog koda i alternativa CapCutu za macOS, Windows, Linux i Android. Pokriva ono zbog čega ljudi zapravo otvaraju CapCut: automatske titlove, pretvorbu teksta u govor, uklanjanje pozadine, animaciju ključnim kadrovima, efekte i naslove, višetračno rezanje, izvoz u 4K. Bez ikakvih kvaka: bez vodenog žiga, bez računa, bez pretplate, bez učitavanja.
+NixXCut je besplatan videouređivač otvorenog koda i alternativa CapCutu za macOS, Windows, Linux i Android. Pokriva ono zbog čega ljudi zapravo otvaraju CapCut: automatske titlove, pretvorbu teksta u govor, uklanjanje pozadine, animaciju ključnim kadrovima, efekte i naslove, višetračno rezanje, izvoz u 4K. Bez ikakvih kvaka: bez vodenog žiga, bez računa, bez pretplate, bez učitavanja.
 
 Sve se izvodi lokalno na nativnom Rust motoru s GPU kompozitorom. Instalirajte, ubacite snimke, režite. AI modeli za titlove, glasove i izrezivanje preuzimaju se jednom iz Postavki i nakon toga rade izvan mreže. Vaše snimke nikada ne napuštaju vaš disk.
 
@@ -76,12 +76,12 @@ Dva ulaza:
 1. **[Web-stranica](https://concatenate.pages.dev/#download)** daje vam pravu inačicu za vaše računalo. Počnite ovdje.
 2. **[GitHub Releases](https://github.com/jub0t/Concat/releases)** ima svaku inačicu za svaku platformu, s instalacijama, paketima i kontrolnim zbrojevima. Za kad želite birati.
 
-Concat je u **beti**: radi, a još ima rubova. [Javite](https://github.com/jub0t/Concat/issues) kad naiđete na jedan.
+NixXCut je u **beti**: radi, a još ima rubova. [Javite](https://github.com/jub0t/Concat/issues) kad naiđete na jedan.
 
 **Platforme**
 
 - ✅ **Windows** · x86_64 (ARM inačice su pauzirane, vidi [#326](https://github.com/jub0t/Concat/issues/326)). Instalacija i `.msi`. Ako SmartScreen zaustavi nepotpisanu inačicu: **Više informacija** › **Svejedno pokreni**
-- ✅ **macOS** · Intel i Apple Silicon. Ako macOS odbije otvoriti nepotpisanu inačicu: `xattr -dr com.apple.quarantine /Applications/Concat.app`
+- ✅ **macOS** · Intel i Apple Silicon. Ako macOS odbije otvoriti nepotpisanu inačicu: `xattr -dr com.apple.quarantine /Applications/NixXCut.app`
 - ✅ **Linux** · x86_64 i ARM. `.deb`, `.rpm`, `.AppImage` i Arch paket. Također Flatpak na **[Flatparku](https://flatpark.org/apps/app.concat.editor/)**, Flatpak repozitoriju zajednice koji omata x86_64 `.deb` svakog izdanja i ažurira se s njim
 - ✅ **Android** · telefoni i tableti
 - ✅ **iOS / iPadOS** · iPhone i iPad, sideloadom
@@ -97,13 +97,13 @@ Concat je u **beti**: radi, a još ima rubova. [Javite](https://github.com/jub0t
 > [!IMPORTANT]
 > Najbolji način doprinosa jest uzeti inačicu sa stranice [Releases](https://github.com/jub0t/Concat/releases) i koristiti je: pronaći gdje puca i reći gdje bi mogla biti bolja.
 >
-> Spremni pisati kod? [CONTRIBUTING.md](../CONTRIBUTING.md) pokriva postavljanje, raspored stabla, provjere koje treba pokrenuti i kako se doprinosi licenciraju. Upravljate Concatom iz skripte, servisa ili agenta? [Dokumentacija za razvojne programere](https://concatenate.pages.dev/docs) pokriva Concat API i njegove prijenose: JSON-RPC i gRPC. [U ovoj raspravi](https://github.com/jub0t/Concat/discussions/3) projekt je najavljen.
+> Spremni pisati kod? [CONTRIBUTING.md](../CONTRIBUTING.md) pokriva postavljanje, raspored stabla, provjere koje treba pokrenuti i kako se doprinosi licenciraju. Upravljate NixXCutom iz skripte, servisa ili agenta? [Dokumentacija za razvojne programere](https://concatenate.pages.dev/docs) pokriva NixXCut API i njegove prijenose: JSON-RPC i gRPC. [U ovoj raspravi](https://github.com/jub0t/Concat/discussions/3) projekt je najavljen.
 > 
 > Suradnici mogu zatražiti ulogu `@Contributor` na Discord poslužitelju: samo pitajte.
 
 ## Povijest zvjezdica
 
-<a href="https://www.star-history.com/?repos=jub0t%2Fconcat&type=date&releases=&legend=bottom-right">
+<a href="https://www.star-history.com/?repos=jub0t%2Fnixxcut&type=date&releases=&legend=bottom-right">
  <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=jub0t/concat&type=date&legend=bottom-right" />
 </a>
 

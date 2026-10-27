@@ -46,7 +46,7 @@ concrt140.dll                  any
 
 # whisper's CPU kernels, one module per x86_64 generation, of which ggml
 # loads only the best one the CPU's CPUID says it can run (build-app.yml,
-# GGML_BACKEND_DL; concat-speech's `cpu_backend`). Those for Haswell and
+# GGML_BACKEND_DL; nixxcut-speech's `cpu_backend`). Those for Haswell and
 # newer, and AMD's Piledriver, are built for their generation as a whole
 # and never load on an older CPU. The ones an Ivy Bridge or a Sandy Bridge
 # loads - x64, sse42, sandybridge, ivybridge - have no row, so they may
@@ -77,12 +77,12 @@ ggml-cpu-ivybridge.dll         16    0     0      0          0
 ggml.dll                       32    0     0      0          0
 whisper.dll                    48    0     0      0          0
 
-# Concat itself. It holds dispatched code of its own - memchr, aho-corasick
+# NixXCut itself. It holds dispatched code of its own - memchr, aho-corasick
 # and ring choose AVX2 or BMI2 paths at run time (ring's hand-written
 # cryptography is where mulx and rorx come from), and Skia carries its
 # Haswell and Skylake-X stages beside the baseline ones - so the vector
 # classes are not limited. The compiler-made BMI column is the one that
-# tells: pyke's static ONNX Runtime, linked into concat.exe in 0.2.5 and
+# tells: pyke's static ONNX Runtime, linked into nixxcut.exe in 0.2.5 and
 # 0.2.6 (#313), brought some 2,700 of them. On Linux the binary also links
 # sherpa-onnx statically, with an ONNX Runtime of its own inside.
 #
@@ -92,5 +92,5 @@ whisper.dll                    48    0     0      0          0
 # prints each binary's counts. Once it has, set the limit a margin above
 # the count shown, without the `~`, so the next library compiled for
 # Haswell fails the build.
-concat.exe                     -     -     ~1000  -          -
-concat                         -     -     ~1000  -          -
+nixxcut.exe                     -     -     ~1000  -          -
+nixxcut                         -     -     ~1000  -          -

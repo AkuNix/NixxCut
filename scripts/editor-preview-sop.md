@@ -6,13 +6,13 @@ editor window floating on a soft gradient card, built by
 
 ## Steps
 
-1. **Run the app** — `cd src && cargo run --release -p concat`. Stage something
+1. **Run the app** — `cd src && cargo run --release -p nixxcut`. Stage something
    presentable: clips in the media bin, a few tracks on the timeline, the
    playhead somewhere interesting. Avoid personal file names in the media
    panel. Make the window wide (the composite assumes a landscape window).
 
 2. **Capture the window.** In dark theme, press `⌘⇧4`, then `Space`, then
-   click the Concat window. macOS saves the window with a transparent margin
+   click the NixXCut window. macOS saves the window with a transparent margin
    and its drop shadow; the script trims that away itself.
 
 3. **Build the composite:**

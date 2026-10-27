@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-Concat is pre-1.0. Fixes go into the current minor release only; older
+NixXCut is pre-1.0. Fixes go into the current minor release only; older
 releases are not patched.
 
 | Version | Supported          |
@@ -31,14 +31,14 @@ What to expect:
 
 ## What counts
 
-Concat runs entirely on your machine. Reports we care about most:
+NixXCut runs entirely on your machine. Reports we care about most:
 
 - A project file, media file, template or effect package that causes
   code execution, writes outside the project folder, or reads files it
   was not given.
 - A downloaded model or its mirror being swapped for something else
   without the digest check catching it.
-- The API server (`concat-cli serve`, or Settings › Automation) accepting a
+- The API server (`nixxcut-cli serve`, or Settings › Automation) accepting a
   call it should have refused: a missing or wrong token, on any address,
   or a server that started with no token at all.
 
